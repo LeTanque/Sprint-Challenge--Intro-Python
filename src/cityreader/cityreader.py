@@ -24,7 +24,8 @@
 # ...         print(', '.join(row))
 # Spam, Spam, Spam, Spam, Spam, Baked Beans
 # Spam, Lovely Spam, Wonderful Spam
-import csv, sys
+import csv
+import sys
 import math
 cities = []
 
@@ -66,12 +67,14 @@ for c in cities:
 # Allow the user to input two points, each specified by latitude and longitude.
 # These points form the corners of a lat/lon square. Pass these latitude and
 # longitude values as parameters to the `cityreader_stretch` function, along
-# with the `cities` list that holds all the City instances from the `cityreader`
+# with the `cities` list that holds all the City instances from the
+# `cityreader`
 # function. This function should output all the cities that fall within the
 # coordinate square.
 #
 # Be aware that the user could specify either a lower-left/upper-right pair of
-# coordinates, or an upper-left/lower-right pair of coordinates. Hint: normalize
+# coordinates, or an upper-left/lower-right pair of coordinates. Hint:
+# normalize
 # the input data so that it's always one or the other, then search for cities.
 # In the example below, inputting 32, -120 first and then 45, -100 should not
 # change the results of what the `cityreader_stretch` function returns.
@@ -107,11 +110,11 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     print('range_lat: ', range_lat)
     print('range_lon: ', range_lon)
 
-    # TODO Ensure that the lat and lon valuse are all floats
+    # TODO Ensure that the lat and lon values are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
     print('cities: ', cities)
-    within_lat = [i for i in cities if i.lat == math.floor(47)]
+    within_lat = [i.lat for i in cities if range_lat[0] <= i.lat <= range_lat[-1]]
     print('within_lat: ', within_lat)
     return within
 
