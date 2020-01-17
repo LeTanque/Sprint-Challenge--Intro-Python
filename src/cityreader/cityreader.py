@@ -25,6 +25,7 @@
 # Spam, Spam, Spam, Spam, Spam, Baked Beans
 # Spam, Lovely Spam, Wonderful Spam
 import csv, sys
+import math
 cities = []
 
 
@@ -35,7 +36,7 @@ class City:
         self.lon = lon
 
     def __repr__(self):
-        return f'{self.name},{self.lat},{self.lon}'
+        return f'({self.name}, {self.lat}, {self.lon})'
 
 
 def cityreader(cities=[]):
@@ -95,14 +96,13 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     within = []
 
     def calc_range(lat, lon):
-        ranger = []
-        for i in range(lat, lon):
-            ranger.append(i)
-        print('ranger: ', ranger)
+        numbers = [lat, lon]
+        numbers.sort()
+        ranger = [i for i in range(numbers[0], numbers[1])]
         return ranger
 
-    range_lat = calc_range(lat1, lat2)
-    range_lon = calc_range(lon1, lon2)
+    range_lat = calc_range(int(lat1), int(lat2))
+    range_lon = calc_range(int(lon1), int(lon2))
 
     print('range_lat: ', range_lat)
     print('range_lon: ', range_lon)
@@ -110,7 +110,9 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # TODO Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
-
+    print('cities: ', cities)
+    within_lat = [i for i in cities if i.lat == math.floor(47)]
+    print('within_lat: ', within_lat)
     return within
 
 
