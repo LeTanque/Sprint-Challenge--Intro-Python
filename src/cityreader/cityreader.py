@@ -27,7 +27,6 @@
 import csv
 import sys
 import math
-cities = []
 
 
 class City:
@@ -37,7 +36,10 @@ class City:
         self.lon = lon
 
     def __repr__(self):
-        return f'({self.name}, {self.lat}, {self.lon})'
+        return f'{self.name}, {self.lat},{self.lon}'
+
+
+cities = []
 
 
 def cityreader(cities=[]):
@@ -49,7 +51,7 @@ def cityreader(cities=[]):
         first_row = next(cutyreader)
         try:
             for row in cutyreader:
-                cities.append(City(row[0], row[3], row[4]))
+                cities.append(City(row[0], float(row[3]), float(row[4])))
         except csv.Error as e:
             sys.exit('file {}, line {}: {}'.format(filename, reader.line_num, e))
     return cities
@@ -119,4 +121,4 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     return within
 
 
-cityreader_stretch(45, -100, 32, -120, cities)
+# cityreader_stretch(45, -100, 32, -120, cities)
