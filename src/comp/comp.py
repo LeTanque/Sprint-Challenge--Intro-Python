@@ -48,12 +48,14 @@ print(b)
 #         print(chr(c))
 print("Starts between C and G, inclusive:")
 # c = [name.name for name in humans if char_range("c", "g") in str(name)]
-c = [name.name for name in humans if "Human: C" in str(name) or "Human: D" in str(name) or "Human: E" in str(name) or "Human: F" in str(name) or "Human: G" in str(name)]
+# c = [name.name for name in humans if "Human: C" in str(name) or "Human: D" in str(name) or "Human: E" in str(name) or "Human: F" in str(name) or "Human: G" in str(name)]
+# c = [human.name for human in humans if ord(human.name[0]) in range(ord("c"), ord("h"))]
+c = [human.name for human in humans if ord(human.name[0]) in range(ord("C"), ord("H"))]
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
 print("Ages plus 10:")
-d = [name.age + 10 for name in humans]
+d = [human.age + 10 for human in humans]
 print(d)
 
 # Write a list comprehension that creates a list of strings which are the name
